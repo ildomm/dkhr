@@ -1,0 +1,25 @@
+
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: xxx
+  host: localhost
+
+development:
+  <<: *default
+  database: dumpark3_development
+
+test: &test
+  <<: *default
+  database: dumpark3_test
+
+production:
+  <<: *default
+  database: dumpark3_production
+  username: jcrawlernz
+  password: <%= ENV['dumpark_DATABASE_PASSWORD'] %>
+
+cucumber:
+  <<: *test
